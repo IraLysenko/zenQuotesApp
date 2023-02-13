@@ -10,8 +10,11 @@ import { Quote } from "../types/quote.type";
 
 export class QuotesService {
   constructor(private http: HttpClient) { }
-  private API_URL = 'http://localhost:3000'
-  private quotesUrl = this.API_URL + '/quotes';
+  // local quotes
+  // private API_URL = 'http://localhost:3000'
+  // private quotesUrl = this.API_URL + '/quotes';
+
+  private quotesUrl = 'https://type.fit/api/quotes';
 
   /** GET heroes from the server */
   getQuotes(): Observable<Quote[]> {

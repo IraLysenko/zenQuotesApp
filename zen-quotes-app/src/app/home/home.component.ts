@@ -11,14 +11,19 @@ import {Quote} from "../../types/quote.type";
 export class HomeComponent implements OnInit{
   title = "Inspiration";
   quotes: Quote[] = [];
+  authors: string[] = [];
 
   constructor(private quotesService: QuotesService) {}
+
   ngOnInit(): void {
     this.getQuotes();
   }
 
   getQuotes(): void {
     this.quotesService.getQuotes()
-      .subscribe(quotes => this.quotes = quotes);
+      .subscribe(quotes => {
+        this.quotes = quotes.slice(1, 100);
+        this.authors = Array.from(new Set(this.quotes.map(quote => quote.author)));
+      });
   }
 }

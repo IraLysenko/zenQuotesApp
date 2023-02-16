@@ -1,8 +1,10 @@
 <section>
   <ul class="flex flex-wrap justify-between mb-4">
-    <li *ngFor="let author of authors | slice: 1:18 " class="px-4 py-2 mr-2 h-auto shadow-md flex rounded-xl hover:shadow-lg cursor-pointer text-gray-600">
-      <span>{{author.authorName ?? "Unknown"}}</span>
+    <li *ngFor="let author of authors | slice: 1:authorsQuantity" class="px-4 py-2 mr-2 h-auto shadow-md flex rounded-xl hover:shadow-lg cursor-pointer text-gray-600">
+      <span>{{author.authorName || "Unknown"}}</span>
     </li>
   </ul>
-  <a href="#" class="flex items-center justify-center w-full text-center text-gray-400">More</a>
+  <button
+    type="button"
+    class="flex items-center justify-center w-full text-center text-gray-400" (click)="showMoreAuthors()">More</button>
 </section>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Author} from "../../types/author.type";
 
 @Component({
@@ -7,22 +7,13 @@ import {Author} from "../../types/author.type";
   styleUrls: ['./authors.component.scss']
 })
 
-export class AuthorsComponent implements OnInit{
+export class AuthorsComponent {
   @Input() authors: Author[] = [];
   authorsQuantity: number = 33;
-
-  constructor() {
-    console.log('onInit'+this.authors)
-  }
-
-  ngOnInit(): void {
-    console.log('onInit'+this.authors.length)
-  }
 
   showMoreAuthors() {
     if(this.authors.length > this.authorsQuantity) {
       this.authorsQuantity += this.authorsQuantity;
     }
   }
-
 }

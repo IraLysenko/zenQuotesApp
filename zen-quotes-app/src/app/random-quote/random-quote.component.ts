@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, EventEmitter, Output} from '@angular/core';
 import {Quote} from "../../types/quote.type";
 
 @Component({
@@ -8,4 +8,5 @@ import {Quote} from "../../types/quote.type";
 })
 export class RandomQuoteComponent {
   @Input() randomQuote: Quote = {author: "", text: ""};
+  @Output() randomQuoteNext = new EventEmitter();
 }

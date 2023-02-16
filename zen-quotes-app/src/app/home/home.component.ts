@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {QuotesService} from "../quotes.service";
 import {Quote} from "../../types/quote.type";
 import {Author} from "../../types/author.type";
@@ -17,18 +17,30 @@ export class HomeComponent implements OnInit{
 
   constructor(private quotesService: QuotesService) {}
 
-  ngOnInit(): void {
-    this.getQuotes();
+  getAuthors() {
+    this.authors = Array.from(new Set(this.quotes.map(quote => {
+      return { "authorName" : quote.author }
+    })));
   }
 
-  getQuotes(): void {
+  generateRandomQuote() {
+    this.randomQuote = this.quotes[Math.floor(Math.random()*this.quotes.length)]
+  }
+
+  getQuotesData(): void {
     this.quotesService.getQuotes()
       .subscribe(quotes => {
         this.quotes = quotes.slice(1, 100);
-        this.authors = Array.from(new Set(this.quotes.map(quote => {
-          return { "authorName" : quote.author }
-        })));
-        this.randomQuote = this.quotes[Math.floor(Math.random()*this.quotes.length)]
+        this.getAuthors();
+        this.generateRandomQuote();
       });
+  }
+
+  ngOnInit(): void {
+    this.getQuotesData();
+  }
+
+  randomQuoteNext(): void {
+    this.generateRandomQuote();
   }
 }

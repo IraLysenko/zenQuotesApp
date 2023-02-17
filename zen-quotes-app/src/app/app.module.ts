@@ -13,6 +13,8 @@ import { MyQuotesComponent } from './my-quotes/my-quotes.component';
 import { LoginComponent } from './login/login.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { RandomQuoteComponent } from './random-quote/random-quote.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,18 +28,20 @@ import { RandomQuoteComponent } from './random-quote/random-quote.component';
     QuotesComponent,
     RandomQuoteComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      {path: '', redirectTo: '/home', pathMatch: "full"},
-      {path: 'home', component: HomeComponent},
-      {path: 'my-quotes', component: MyQuotesComponent},
-      {path: 'balance', component: BalanceComponent},
-      {path: 'login', component: LoginComponent}
-    ]),
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        RouterModule.forRoot([
+            {path: '', redirectTo: '/home', pathMatch: "full"},
+            {path: 'home', component: HomeComponent},
+            {path: 'my-quotes', component: MyQuotesComponent},
+            {path: 'balance', component: BalanceComponent},
+            {path: 'login', component: LoginComponent}
+        ]),
+        FontAwesomeModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

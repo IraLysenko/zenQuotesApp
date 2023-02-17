@@ -1,5 +1,7 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Author} from "../../types/author.type";
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import {CheckboxControlValueAccessor} from "@angular/forms";
 
 @Component({
   selector: 'app-authors',
@@ -8,8 +10,12 @@ import {Author} from "../../types/author.type";
 })
 
 export class AuthorsComponent {
-  @Input() authors: Author[] = [];
-  authorsQuantity: number = 33;
+  faChevronDown = faChevronDown;
+  authorsQuantity: number = 23;
+  authorsFilter: string[] = [];
+
+  @Input() authors: string[] = [];
+  @Output() addValueToFilter = new EventEmitter();
 
   showMoreAuthors() {
     if(this.authors.length > this.authorsQuantity) {

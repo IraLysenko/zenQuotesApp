@@ -1,7 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuotesService} from "../quotes.service";
 import {Quote} from "../../types/quote.type";
-import {Author} from "../../types/author.type";
 
 @Component({
   selector: 'app-home',
@@ -12,15 +11,14 @@ import {Author} from "../../types/author.type";
 export class HomeComponent implements OnInit{
   title = "Inspiration";
   quotes: Quote[] = [];
-  authors: Author[] = [];
+  authors: string[] = [];
+  authorsFilter: string[] = [];
   randomQuote: Quote = {author: "", text: ""};
 
   constructor(private quotesService: QuotesService) {}
 
   getAuthors() {
-    this.authors = Array.from(new Set(this.quotes.map(quote => {
-      return { "authorName" : quote.author }
-    })));
+    this.authors = [...new Set(this.quotes.map(quote => quote.author))].sort();
   }
 
   generateRandomQuote() {
@@ -42,5 +40,10 @@ export class HomeComponent implements OnInit{
 
   randomQuoteNext(): void {
     this.generateRandomQuote();
+  }
+
+  addValueToFilter(value: any) {
+    this.authorsFilter = [...this.authorsFilter, value.toString()];
+    this.quotes = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
   }
 }

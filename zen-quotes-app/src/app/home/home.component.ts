@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {QuotesService} from "../quotes.service";
 import {Quote} from "../../types/quote.type";
-import {EventType} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -16,6 +15,8 @@ export class HomeComponent implements OnInit {
   authorsFilter: string[] = [];
   randomQuote: Quote = {author: "", text: ""};
   quotesFiltered: Quote[] = [];
+  quotesPerPage: number = 9;
+  pagesArray: number[] = [];
 
   constructor(private quotesService: QuotesService) {}
 
@@ -33,7 +34,13 @@ export class HomeComponent implements OnInit {
         this.quotes = quotes.slice(1, 100);
         this.getAuthors();
         this.generateRandomQuote();
+        this.countPages();
       });
+  }
+
+  countPages(): void {
+    let quotes = !this.quotesFiltered.length ? this.quotes : this.quotesFiltered;
+    this.pagesArray = quotes.length > this.quotesPerPage ? ([...Array(Math.ceil(quotes.length / 9)).keys()]) : [];
   }
 
   ngOnInit(): void {
@@ -47,5 +54,6 @@ export class HomeComponent implements OnInit {
   addValueToFilter(e: HTMLInputElement) {
     this.authorsFilter = e.checked ? [...this.authorsFilter, e.value] : this.authorsFilter.filter(author => author !== e.value);
     this.quotesFiltered = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
+    this.countPages();
   }
 }

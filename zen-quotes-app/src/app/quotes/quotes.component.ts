@@ -8,4 +8,6 @@ import {Quote} from "../../types/quote.type";
 })
 export class QuotesComponent {
   @Input() quotes: Quote[] = [];
+  @Input() quotesPerPage: number = 0;
+  @Input() pagesArray: number[] = [];
 }

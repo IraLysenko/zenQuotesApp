@@ -42,8 +42,8 @@ export class HomeComponent implements OnInit{
     this.generateRandomQuote();
   }
 
-  addValueToFilter(value: any) {
-    this.authorsFilter = [...this.authorsFilter, value.toString()];
+  addValueToFilter(value: string) {
+    this.authorsFilter = [...this.authorsFilter, value];
     this.quotes = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
   }
 }

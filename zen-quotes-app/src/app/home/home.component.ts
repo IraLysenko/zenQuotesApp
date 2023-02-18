@@ -1,6 +1,7 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuotesService} from "../quotes.service";
 import {Quote} from "../../types/quote.type";
+import {EventType} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -43,9 +44,8 @@ export class HomeComponent implements OnInit {
     this.generateRandomQuote();
   }
 
-  addValueToFilter(value: string) {
-    this.authorsFilter = [...this.authorsFilter, value];
-    const filteredQuotes = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
-    this.quotesFiltered = filteredQuotes;
+  addValueToFilter(e: HTMLInputElement) {
+    this.authorsFilter = e.checked ? [...this.authorsFilter, e.value] : this.authorsFilter.filter(author => author !== e.value);
+    this.quotesFiltered = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
   }
 }

@@ -2,5 +2,5 @@
   <!-- <h1 class="mb-4">{{title}}</h1>-->
   <app-random-quote [randomQuote] = "randomQuote" (randomQuoteNext)="randomQuoteNext()"></app-random-quote>
   <app-authors [authors] = "authors" (addValueToFilter)="addValueToFilter($event)"></app-authors>
-  <app-quotes [quotes] = "quotes"></app-quotes>
+  <app-quotes [quotes] = "!quotesFiltered.length ? quotes : quotesFiltered"></app-quotes>
 </section>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {QuotesService} from "../quotes.service";
 import {Quote} from "../../types/quote.type";
 
@@ -8,12 +8,13 @@ import {Quote} from "../../types/quote.type";
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   title = "Inspiration";
   quotes: Quote[] = [];
   authors: string[] = [];
   authorsFilter: string[] = [];
   randomQuote: Quote = {author: "", text: ""};
+  quotesFiltered: Quote[] = [];
 
   constructor(private quotesService: QuotesService) {}
 
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit{
 
   addValueToFilter(value: string) {
     this.authorsFilter = [...this.authorsFilter, value];
-    this.quotes = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
+    const filteredQuotes = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
+    this.quotesFiltered = filteredQuotes;
   }
 }

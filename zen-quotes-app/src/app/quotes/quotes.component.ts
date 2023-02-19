@@ -10,4 +10,10 @@ export class QuotesComponent {
   @Input() quotes: Quote[] = [];
   @Input() quotesPerPage: number = 0;
   @Input() pagesArray: number[] = [];
+
+  activePage: number = 0;
+
+  activePageDetect(page: number) {
+    this.activePage = page;
+  }
 }

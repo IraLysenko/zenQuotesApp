@@ -1,6 +1,6 @@
 <section class="py-10">
   <ul class="flex w-full flex-wrap justify-between">
-    <li *ngFor="let quote of quotes | slice: 0:quotesPerPage" class="w-[32%] p-6 mb-4 border-t-4 border-black shadow-lg">
+    <li *ngFor="let quote of quotes | slice: activePage:activePage + quotesPerPage" class="w-[32%] p-6 mb-4 border-t-4 border-black shadow-lg">
       <div class="flex flex-col justify-between h-full">
         <p class="text-2xl mb-6">{{quote.text}}</p>
         <p class="text-gray-600">{{quote?.author ?? "Unknown"}}</p>
@@ -11,7 +11,16 @@
   <div class="flex w-full justify-center mt-6 text-gray-400">
     <ul *ngIf="pagesArray.length" class="flex">
       <li *ngFor="let page of pagesArray" class="p-2 mx-1 border-1 border-black rounded-br-full">
-        <button type="button" class="hover:">{{page + 1}}</button>
+        <input
+          id="paginationItem-{{page}}"
+          type="radio" name="paginationItem"
+          class="peer"
+          (change)="activePageDetect(page)"
+          [checked]="activePage === page"
+          hidden>
+        <label for="paginationItem-{{page}}" class="hover:text-gray-600 peer-checked:text-gray-600 transition hover:cursor-pointer">
+          {{page + 1}}
+        </label>
       </li>
     </ul>
   </div>

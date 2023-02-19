@@ -15,7 +15,7 @@
           id="paginationItem-{{page}}"
           type="radio" name="paginationItem"
           class="peer"
-          (change)="activePageDetect(page)"
+          (change)="activePageDetect.emit(page)"
           [checked]="activePage === page"
           hidden>
         <label for="paginationItem-{{page}}" class="hover:text-gray-600 peer-checked:text-gray-600 transition hover:cursor-pointer">

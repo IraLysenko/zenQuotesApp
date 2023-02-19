@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Quote} from "../../types/quote.type";
 
 @Component({
@@ -10,10 +10,6 @@ export class QuotesComponent {
   @Input() quotes: Quote[] = [];
   @Input() quotesPerPage: number = 0;
   @Input() pagesArray: number[] = [];
-
-  activePage: number = 0;
-
-  activePageDetect(page: number) {
-    this.activePage = page;
-  }
+  @Input() activePage: number = 0;
+  @Output() activePageDetect = new EventEmitter();
 }

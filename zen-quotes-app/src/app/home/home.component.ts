@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   quotesFiltered: Quote[] = [];
   quotesPerPage: number = 9;
   pagesArray: number[] = [];
+  activePage: number = 0;
 
   constructor(private quotesService: QuotesService) {}
 
@@ -54,6 +55,11 @@ export class HomeComponent implements OnInit {
   addValueToFilter(e: HTMLInputElement) {
     this.authorsFilter = e.checked ? [...this.authorsFilter, e.value] : this.authorsFilter.filter(author => author !== e.value);
     this.quotesFiltered = this.quotes.filter(quote => this.authorsFilter.includes(quote.author));
+    this.activePage = 0;
     this.countPages();
+  }
+
+  activePageDetect(page: number) {
+    this.activePage = page;
   }
 }

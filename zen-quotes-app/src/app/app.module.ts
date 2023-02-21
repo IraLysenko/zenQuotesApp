@@ -15,6 +15,7 @@ import { QuotesComponent } from './quotes/quotes.component';
 import { RandomQuoteComponent } from './random-quote/random-quote.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from "@angular/forms";
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from "@angular/forms";
     MyQuotesComponent,
     LoginComponent,
     QuotesComponent,
-    RandomQuoteComponent
+    RandomQuoteComponent,
+    SearchComponent
   ],
     imports: [
         BrowserModule,

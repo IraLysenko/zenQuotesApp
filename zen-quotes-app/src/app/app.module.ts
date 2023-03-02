@@ -1,20 +1,20 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthorsComponent } from './authors/authors.component';
-import { RouterModule } from "@angular/router";
-import { HomeComponent } from './home/home.component';
 import { BalanceComponent } from './balance/balance.component';
-import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MyQuotesComponent } from './my-quotes/my-quotes.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { MyQuotesComponent } from './my-quotes/my-quotes.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { RandomQuoteComponent } from './random-quote/random-quote.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from "@angular/forms";
+import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
 
 @NgModule({
   declarations: [
@@ -26,23 +26,23 @@ import { FormsModule } from "@angular/forms";
     MyQuotesComponent,
     LoginComponent,
     QuotesComponent,
-    RandomQuoteComponent
+    RandomQuoteComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        RouterModule.forRoot([
-            {path: '', redirectTo: '/home', pathMatch: "full"},
-            {path: 'home', component: HomeComponent},
-            {path: 'my-quotes', component: MyQuotesComponent},
-            {path: 'balance', component: BalanceComponent},
-            {path: 'login', component: LoginComponent}
-        ]),
-        FontAwesomeModule,
-        FormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'my-quotes', component: MyQuotesComponent },
+      { path: 'balance', component: BalanceComponent },
+      { path: 'login', component: LoginComponent },
+    ]),
+    FontAwesomeModule,
+    FormsModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

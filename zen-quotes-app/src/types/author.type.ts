@@ -1,3 +1,3 @@
 export type Author = {
-  "name": string;
-}
+  name: string;
+};

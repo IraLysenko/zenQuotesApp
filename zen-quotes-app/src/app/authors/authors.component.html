@@ -1,25 +1,32 @@
 <section>
   <ul class="flex flex-wrap justify-between mb-4">
-    <li *ngFor="let author of authors | slice: 1:authorsQuantity">
-      <input type="checkbox"
-             value="{{author}}"
-             name="{{author}}"
-             id="{{author}}"
-             class="label-checked:text-red-700 peer"
-             (change)="addValueToFilter.emit($event.target)"
-             hidden>
-      <label for="{{author}}"
-             class="text-gray-600 px-4 py-2 mr-2 h-auto shadow-md flex rounded-xl hover:shadow-lg
-             peer-checked:transition peer-checked:shadow-gray-400 peer-checked:shadow-lg cursor-pointer">
-        {{author || "Unknown"}}
+    <li *ngFor="let author of authors | slice : 1 : authorsQuantity">
+      <input
+        type="checkbox"
+        value="{{ author }}"
+        name="{{ author }}"
+        id="{{ author }}"
+        class="label-checked:text-red-700 peer"
+        (change)="addValueToFilter.emit($event.target)"
+        hidden
+      />
+      <label
+        for="{{ author }}"
+        class="text-gray-600 px-4 py-2 mr-2 h-auto shadow-md flex rounded-xl hover:shadow-lg peer-checked:transition peer-checked:shadow-gray-400 peer-checked:shadow-lg cursor-pointer"
+      >
+        {{ author || 'Unknown' }}
       </label>
     </li>
   </ul>
-  <div class="flex items-center justify-center w-full text-gray-400 hover:text-gray-600 hover:transition">
+  <div
+    class="flex items-center justify-center w-full text-gray-400 hover:text-gray-600 hover:transition"
+  >
     <button
       *ngIf="authorsQuantity < authors.length"
       type="button"
-      class="flex flex-col justify-center items-center text-center" (click)="showMoreAuthors()">
+      class="flex flex-col justify-center items-center text-center"
+      (click)="showMoreAuthors()"
+    >
       <span>More</span>
       <fa-icon class="mt-[-5px]" [icon]="faChevronDown"></fa-icon>
     </button>

@@ -1,15 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError} from 'rxjs/operators';
-import { Quote } from "../types/quote.type";
+import { catchError } from 'rxjs/operators';
+
+import { Quote } from '../types/quote.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class QuotesService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   // local quotes
   // private API_URL = 'http://localhost:3000'
   // private quotesUrl = this.API_URL + '/quotes';
@@ -18,10 +18,9 @@ export class QuotesService {
 
   /** GET heroes from the server */
   getQuotes(): Observable<Quote[]> {
-    return this.http.get<Quote[]>(this.quotesUrl)
-      .pipe(
-        catchError(this.handleError<Quote[]>('getQuotes', []))
-      );
+    return this.http
+      .get<Quote[]>(this.quotesUrl)
+      .pipe(catchError(this.handleError<Quote[]>('getQuotes', [])));
   }
 
   /**
@@ -33,7 +32,6 @@ export class QuotesService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 

@@ -28,8 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   generateRandomQuote() {
-    this.randomQuote =
-      this.quotes[Math.floor(Math.random() * this.quotes.length)];
+    this.randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
   }
 
   getQuotesData(): void {

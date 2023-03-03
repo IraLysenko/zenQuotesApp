@@ -32,13 +32,6 @@ import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'my-quotes', component: MyQuotesComponent },
-      { path: 'balance', component: BalanceComponent },
-      { path: 'login', component: LoginComponent },
-    ]),
     FontAwesomeModule,
     FormsModule,
   ],

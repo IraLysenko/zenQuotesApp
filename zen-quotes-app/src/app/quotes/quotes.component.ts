@@ -13,4 +13,6 @@ export class QuotesComponent {
   @Input() pagesArray: number[] = [];
   @Input() activePage = 0;
   @Output() activePageDetect = new EventEmitter();
+
+  trackByFn = (index: number, item: Quote) => item;
 }

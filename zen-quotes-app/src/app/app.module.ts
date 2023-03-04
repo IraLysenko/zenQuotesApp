@@ -28,13 +28,7 @@ import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
     QuotesComponent,
     RandomQuoteComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    FormsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FontAwesomeModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

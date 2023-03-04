@@ -2,7 +2,8 @@
   <ul class="flex w-full flex-wrap justify-between">
     <li
       *ngFor="
-        let quote of quotes | slice : activePage * quotesPerPage : activePage * quotesPerPage + quotesPerPage;
+        let quote of quotes
+          | slice : activePage * quotesPerPage : activePage * quotesPerPage + quotesPerPage;
         index as i;
         trackBy: trackByFn
       "

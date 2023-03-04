@@ -4,11 +4,7 @@
     [randomQuote]="randomQuote"
     (randomQuoteNext)="randomQuoteNext()"
   ></app-random-quote>
-  <app-authors
-    [authors]="authors"
-    (addValueToFilter)="addValueToFilter($event)"
-  >
-  </app-authors>
+  <app-authors [authors]="authors" (addValueToFilter)="addValueToFilter($event)"> </app-authors>
   <app-quotes
     [quotes]="!quotesFiltered.length ? quotes : quotesFiltered"
     [quotesPerPage]="quotesPerPage"

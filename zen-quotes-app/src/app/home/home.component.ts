@@ -22,9 +22,7 @@ export class HomeComponent implements OnInit {
   constructor(private quotesService: QuotesService) {}
 
   getAuthors() {
-    this.authors = [
-      ...new Set(this.quotes.map((quote) => quote.author)),
-    ].sort();
+    this.authors = [...new Set(this.quotes.map((quote) => quote.author))].sort();
   }
 
   generateRandomQuote() {
@@ -41,9 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   countPages(): void {
-    const quotes = !this.quotesFiltered.length
-      ? this.quotes
-      : this.quotesFiltered;
+    const quotes = !this.quotesFiltered.length ? this.quotes : this.quotesFiltered;
     this.pagesArray =
       quotes.length > this.quotesPerPage
         ? [...Array(Math.ceil(quotes.length / this.quotesPerPage)).keys()]
@@ -62,9 +58,7 @@ export class HomeComponent implements OnInit {
     this.authorsFilter = e.checked
       ? [...this.authorsFilter, e.value]
       : this.authorsFilter.filter((author) => author !== e.value);
-    this.quotesFiltered = this.quotes.filter((quote) =>
-      this.authorsFilter.includes(quote.author),
-    );
+    this.quotesFiltered = this.quotes.filter((quote) => this.authorsFilter.includes(quote.author));
     this.activePage = 0;
     this.countPages();
   }

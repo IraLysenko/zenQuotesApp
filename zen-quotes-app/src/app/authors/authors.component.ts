@@ -14,6 +14,8 @@ export class AuthorsComponent {
   @Input() authors: string[] = [];
   @Output() addValueToFilter = new EventEmitter();
 
+  trackByFn = (index: number, item: any) => item;
+
   showMoreAuthors() {
     if (this.authors.length > this.authorsQuantity) {
       this.authorsQuantity += this.authorsQuantity;

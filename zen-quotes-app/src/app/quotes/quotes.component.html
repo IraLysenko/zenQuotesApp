@@ -4,8 +4,7 @@
       *ngFor="
         let quote of quotes
           | slice : activePage * quotesPerPage : activePage * quotesPerPage + quotesPerPage;
-        index as i;
-        trackBy: trackByFn
+        index as i; trackBy: trackByFn
       "
       class="w-[32%] p-6 mb-4 border-t-4 border-black shadow-lg"
     >
@@ -18,7 +17,9 @@
 
   <div class="flex w-full justify-center mt-6 text-gray-400">
     <ul *ngIf="pagesArray.length" class="flex">
-      <li *ngFor="let page of pagesArray" class="p-2 mx-1 border-1 border-black rounded-br-full">
+      <li *ngFor="let page of pagesArray;
+        index as i; trackBy: trackByFn"
+        class="p-2 mx-1 border-1 border-black rounded-br-full">
         <input
           id="paginationItem-{{ page }}"
           type="radio"

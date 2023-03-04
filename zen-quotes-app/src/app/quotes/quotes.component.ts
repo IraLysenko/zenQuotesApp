@@ -14,5 +14,5 @@ export class QuotesComponent {
   @Input() activePage = 0;
   @Output() activePageDetect = new EventEmitter();
 
-  trackByFn = (index: number, item: Quote) => item;
+  trackByFn = (index: number, item: any) => item;
 }

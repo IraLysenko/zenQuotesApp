@@ -1,6 +1,7 @@
 <section>
   <ul class="flex flex-wrap justify-between mb-4">
-    <li *ngFor="let author of authors | slice : 1 : authorsQuantity">
+    <li *ngFor="let author of authors | slice : 1 : authorsQuantity;
+      index as i; trackBy: trackByFn">
       <input
         type="checkbox"
         value="{{ author }}"

@@ -10,9 +10,6 @@ import { Quote } from '../types/quote.type';
 })
 export class QuotesService {
   constructor(private http: HttpClient) {}
-  // local quotes
-  // private API_URL = 'http://localhost:3000'
-  // private quotesUrl = this.API_URL + '/quotes';
 
   private quotesUrl = 'https://type.fit/api/quotes';
 

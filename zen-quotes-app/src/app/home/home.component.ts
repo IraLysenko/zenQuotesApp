@@ -21,8 +21,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private quotesService: QuotesService) {}
 
-  setAuthors() {
-    this.authors = [...new Set(this.quotes.map((quote) => quote.author))].sort();
+  getAuthors(quotes: Quote[]) {
+    return [...new Set(quotes.map((quote) => quote.author))].sort();
+  }
+
+  setAuthors(authors: string[]) {
+    this.authors = authors;
   }
 
   generateRandomQuote() {
@@ -32,7 +36,7 @@ export class HomeComponent implements OnInit {
   getQuotesData(): void {
     this.quotesService.getQuotes().subscribe((quotes) => {
       this.quotes = quotes.slice(1, 100);
-      this.setAuthors();
+      this.setAuthors(this.getAuthors(this.quotes));
       this.generateRandomQuote();
       this.countPages();
     });

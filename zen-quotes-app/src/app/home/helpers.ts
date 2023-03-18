@@ -23,7 +23,7 @@ export function sortAuthors(authors: Author[] | undefined): Author[] | [] {
   return authors ? orderBy(authors, 'name', ['asc']) : [];
 }
 
-export function getAuthors(quotes: Quote[]): Author[] | [] {
+export function getAuthors(quotes: Quote[] | undefined): Author[] | [] {
   return quotes ? sortAuthors(makeAuthorsUnique(mapAuthorsFromQuotes(quotes))) : [];
 }
 

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.randomQuote = generateRandomQuote(quotes);
   }
 
-  getQuotesData(): void {
+  useQuotesData(): void {
     this.quotesService.getQuotes().subscribe((quotes) => {
       this.quotes = quotes.slice(1, 100);
       this.setAuthors(getAuthors(this.quotes));
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getQuotesData();
+    this.useQuotesData();
   }
 
   randomQuoteNext(): void {

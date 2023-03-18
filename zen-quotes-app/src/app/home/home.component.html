@@ -1,16 +1,21 @@
 <section class="flex flex-col">
-  <!-- <h1 class="mb-4">{{title}}</h1>-->
-  <app-random-quote
-    [randomQuote]="randomQuote"
-    (randomQuoteNext)="randomQuoteNext()"
-  ></app-random-quote>
-  <app-authors [authors]="authors" (addValueToFilter)="addValueToFilter($event)"> </app-authors>
-  <app-quotes
-    [quotes]="!quotesFiltered.length ? quotes : quotesFiltered"
-    [quotesPerPage]="quotesPerPage"
-    [pagesArray]="pagesArray"
-    (activePageDetect)="activePageDetect($event)"
-    [activePage]="activePage"
-  >
-  </app-quotes>
+  <ng-container *ngIf="quotes?.length ; else nothing">
+    <app-random-quote
+      [randomQuote]="randomQuote"
+      (randomQuoteNext)="randomQuoteNext()"
+    ></app-random-quote>
+    <app-authors [authors]="authors" (addValueToFilter)="addValueToFilter($event)"></app-authors>
+    <app-quotes
+      [quotes]="!quotesFiltered.length ? quotes : quotesFiltered"
+      [quotesPerPage]="quotesPerPage"
+      [pagesArray]="pagesArray"
+      (activePageDetect)="activePageDetect($event)"
+      [activePage]="activePage"
+    >
+    </app-quotes>
+  </ng-container>
+  <ng-template #nothing>
+    <p class="text-lg">Sorry, no quotes today...</p>
+  </ng-template>
 </section>
+

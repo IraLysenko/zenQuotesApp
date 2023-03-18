@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Author } from '../../types/author.type';
 import { Quote } from '../../types/quote.type';
 import { QuotesService } from '../quotes.service';
+import { generateRandomQuote, getAuthors } from './helpers';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,7 @@ import { QuotesService } from '../quotes.service';
 export class HomeComponent implements OnInit {
   title = 'Inspiration';
   quotes: Quote[] = [];
-  authors: string[] = [];
+  authors: Author[] = [];
   authorsFilter: string[] = [];
   randomQuote: Quote = { author: '', text: '' };
   quotesFiltered: Quote[] = [];
@@ -21,19 +23,19 @@ export class HomeComponent implements OnInit {
 
   constructor(private quotesService: QuotesService) {}
 
-  setAuthors() {
-    this.authors = [...new Set(this.quotes.map((quote) => quote.author))].sort();
+  setAuthors(authors: Author[]) {
+    this.authors = authors;
   }
 
-  generateRandomQuote() {
-    this.randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
+  setRandomQuote(quotes: Quote[]) {
+    this.randomQuote = generateRandomQuote(quotes);
   }
 
   getQuotesData(): void {
     this.quotesService.getQuotes().subscribe((quotes) => {
       this.quotes = quotes.slice(1, 100);
-      this.setAuthors();
-      this.generateRandomQuote();
+      this.setAuthors(getAuthors(this.quotes));
+      this.setRandomQuote(this.quotes);
       this.countPages();
     });
   }
@@ -51,7 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   randomQuoteNext(): void {
-    this.generateRandomQuote();
+    this.setRandomQuote(this.quotes);
   }
 
   addValueToFilter(e: HTMLInputElement) {

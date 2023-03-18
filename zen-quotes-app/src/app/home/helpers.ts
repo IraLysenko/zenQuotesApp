@@ -2,7 +2,7 @@
 //  @Ira: when we run `ng test`, the tests in helpers.spect.ts fail.
 //  Can you implement this function so that the tests succeed?
 //  Thanks and best of luck! 🍀
-import * as _ from 'lodash';
+import { orderBy, uniqBy } from 'lodash';
 
 import { Author } from '../../types/author.type';
 import { Quote } from '../../types/quote.type';
@@ -16,14 +16,14 @@ export function mapAuthorsFromQuotes(quotes: Quote[] | []): Author[] {
 }
 
 export function makeAuthorsUnique(authors: Author[] | undefined): Author[] | [] {
-  return authors ? [...new Set(authors)] : [];
+  return authors ? uniqBy(authors, 'name') : [];
 }
 
 export function sortAuthors(authors: Author[] | undefined): Author[] | [] {
-  return authors ? _.orderBy(authors, 'name', ['asc']) : [];
+  return authors ? orderBy(authors, 'name', ['asc']) : [];
 }
 
-export function getAuthors(quotes: Quote[] | undefined): Author[] | [] {
+export function getAuthors(quotes: Quote[]): Author[] | [] {
   return quotes ? sortAuthors(makeAuthorsUnique(mapAuthorsFromQuotes(quotes))) : [];
 }
 

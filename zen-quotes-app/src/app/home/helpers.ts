@@ -7,10 +7,13 @@ import { orderBy, uniqBy } from 'lodash';
 import { Author } from '../../types/author.type';
 import { Quote } from '../../types/quote.type';
 
-export function mapAuthorsFromQuotes(quotes: Quote[] | []): Author[] {
+export function mapAuthorsFromQuotes(quotes: Quote[] | []): Author[] | [] {
   return quotes
-    ? quotes.map((quote) => {
-        return { name: quote.author };
+    ? quotes.map((quote, index) => {
+        return {
+          id: quote.author ? quote.author.split(' ').join('-').toLowerCase() : `unknown-${index}`,
+          name: quote.author || 'Unknown',
+        };
       })
     : [];
 }

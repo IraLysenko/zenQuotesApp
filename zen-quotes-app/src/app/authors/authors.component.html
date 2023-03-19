@@ -1,21 +1,21 @@
 <section>
   <ul class="flex flex-wrap justify-between mb-4">
     <li *ngFor="let author of authors | slice : 1 : authorsQuantity;
-      index as i; trackBy: trackByAuthorName">
+      index as i; trackBy: trackByAuthorId">
       <input
         type="checkbox"
         value="{{ author.name }}"
         name="{{ author.name }}"
-        id="{{ author.name }}"
+        id="{{ author.id }}"
         class="label-checked:text-red-700 peer"
         (change)="addValueToFilter.emit($event.target)"
         hidden
       />
       <label
-        for="{{ author.name }}"
+        for="{{ author.id }}"
         class="text-gray-600 px-4 py-2 mr-2 h-auto shadow-md flex rounded-xl hover:shadow-lg peer-checked:transition peer-checked:shadow-gray-400 peer-checked:shadow-lg cursor-pointer"
       >
-        {{ author.name || 'Unknown' }}
+        {{ author.name }}
       </label>
     </li>
   </ul>

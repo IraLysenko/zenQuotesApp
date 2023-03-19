@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BalanceComponent } from './balance/balance.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { MyQuotesComponent } from './my-quotes/my-quotes.component';
+import { BalanceComponent } from '../layouts/balance/balance.component';
+import { HomeComponent } from '../layouts/home/home.component';
+import { LoginComponent } from '../layouts/login/login.component';
+import { MyQuotesComponent } from '../layouts/my-quotes/my-quotes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

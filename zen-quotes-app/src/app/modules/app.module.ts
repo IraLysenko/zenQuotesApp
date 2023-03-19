@@ -4,16 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { AppComponent } from '../app.component';
+import { RandomQuoteComponent } from '../components/random-quote/random-quote.component';
+import { AuthorsComponent } from '../containers/authors/authors.component';
+import { QuotesComponent } from '../containers/quotes/quotes.component';
+import { SidebarNavComponent } from '../containers/sidebar-nav/sidebar-nav.component';
+import { BalanceComponent } from '../layouts/balance/balance.component';
+import { HomeComponent } from '../layouts/home/home.component';
+import { LoginComponent } from '../layouts/login/login.component';
+import { MyQuotesComponent } from '../layouts/my-quotes/my-quotes.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AuthorsComponent } from './authors/authors.component';
-import { BalanceComponent } from './balance/balance.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { MyQuotesComponent } from './my-quotes/my-quotes.component';
-import { QuotesComponent } from './quotes/quotes.component';
-import { RandomQuoteComponent } from './random-quote/random-quote.component';
-import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
 
 @NgModule({
   declarations: [

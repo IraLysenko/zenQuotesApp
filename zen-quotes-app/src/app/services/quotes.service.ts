@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Quote } from '../types/quote.type';
+import { Quote } from '../../types/quote.type';
 
 @Injectable({
   providedIn: 'root',

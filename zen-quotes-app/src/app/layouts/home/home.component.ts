@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Quote } from '../../types/quote.type';
-import { QuotesService } from '../quotes.service';
+import { Quote } from '../../../types/quote.type';
+import { QuotesService } from '../../services/quotes.service';
 
 @Component({
   selector: 'app-home',

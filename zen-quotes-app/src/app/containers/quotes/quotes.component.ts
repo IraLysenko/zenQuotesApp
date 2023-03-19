@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Quote } from '../../types/quote.type';
+import { Quote } from '../../../types/quote.type';
 
 @Component({
   selector: 'app-quotes',

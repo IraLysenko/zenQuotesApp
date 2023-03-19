@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
+import { Author } from '../../types/author.type';
+
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
@@ -11,13 +13,13 @@ export class AuthorsComponent {
   authorsQuantity = 23;
   authorsFilter: string[] = [];
 
-  @Input() authors: string[] = [];
+  @Input() authors!: Author[];
   @Output() addValueToFilter = new EventEmitter();
 
-  trackByItem = (index: number, item: string) => item;
+  trackByAuthorId = (index: number, item: Author) => item.id;
 
   showMoreAuthors() {
-    if (this.authors.length > this.authorsQuantity) {
+    if (this.authors?.length > this.authorsQuantity) {
       this.authorsQuantity += this.authorsQuantity;
     }
   }

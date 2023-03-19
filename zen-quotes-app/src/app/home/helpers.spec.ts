@@ -15,8 +15,8 @@ describe('makeAuthorsUnique(authors)', () => {
   });
   describe('when authors is already a list of unique authors', () => {
     it('should return an array with the same authors', function () {
-      const author1 = { name: 'Ira' };
-      const author2 = { name: 'Danya' };
+      const author1 = { id: 'ira', name: 'Ira' };
+      const author2 = { id: 'danya', name: 'Danya' };
       const uniqueAuthors = [author1, author2];
       const result = makeAuthorsUnique(uniqueAuthors);
       expect(result.filter((a: unknown) => a === author1).length).toEqual(1);
@@ -25,8 +25,8 @@ describe('makeAuthorsUnique(authors)', () => {
   });
   describe('when authors has duplicate authors', () => {
     it('should return an array with only unique authors', function () {
-      const author1 = { name: 'Ira' };
-      const author2 = { name: 'Danya' };
+      const author1 = { id: 'ira', name: 'Ira' };
+      const author2 = { id: 'danya', name: 'Danya' };
       const authorsWithDuplicates = [author1, author2, author2];
       const result = makeAuthorsUnique(authorsWithDuplicates);
       expect(result.filter((a: unknown) => a === author1).length).toEqual(1);
